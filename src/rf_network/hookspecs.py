@@ -18,5 +18,5 @@ def connect_to(connection, host, username, password, platform, options):
 
 
 @hookspec(firstresult=True)
-def send_command_to(command, conn, conn_name, extras):
+def send_command_to(command, conn, conn_name, options):
     """Send command via SSH connection"""
