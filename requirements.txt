@@ -4,7 +4,303 @@
 #
 #    pip-compile requirements.in
 #
+aiofiles==0.8.0
+    # via pyats.log
+aiohttp-swagger==1.0.16
+    # via pyats.log
+aiohttp==3.8.1
+    # via
+    #   aiohttp-swagger
+    #   pyats.log
+aiosignal==1.2.0
+    # via aiohttp
+async-lru==1.0.2
+    # via pyats.log
+async-timeout==4.0.2
+    # via aiohttp
+asyncssh==2.9.0
+    # via scrapli
+attrs==21.4.0
+    # via aiohttp
+bcrypt==3.2.0
+    # via paramiko
+certifi==2021.10.8
+    # via requests
+cffi==1.15.0
+    # via
+    #   bcrypt
+    #   cryptography
+    #   pynacl
+chardet==4.0.0
+    # via pyats.log
+charset-normalizer==2.0.10
+    # via
+    #   aiohttp
+    #   requests
+cisco-gnmi==1.0.15
+    # via genie.libs.sdk
+cryptography==36.0.1
+    # via
+    #   asyncssh
+    #   cisco-gnmi
+    #   paramiko
+    #   pyats.utils
+dill==0.3.4
+    # via
+    #   genie
+    #   unicon
+distro==1.6.0
+    # via
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.utils
+frozenlist==1.3.0
+    # via
+    #   aiohttp
+    #   aiosignal
+future==0.18.2
+    # via textfsm
+genie.libs.clean==22.1
+    # via genie
+genie.libs.conf==22.1
+    # via genie
+genie.libs.filetransferutils==22.1
+    # via genie
+genie.libs.health==22.1
+    # via genie
+genie.libs.ops==22.1
+    # via genie
+genie.libs.parser==22.1
+    # via genie
+genie.libs.sdk==22.1.2
+    # via genie
+genie==22.1
+    # via
+    #   -r requirements.in
+    #   genie.libs.clean
+    #   genie.libs.health
+    #   scrapli
+gitdb==4.0.9
+    # via gitpython
+gitpython==3.1.18
+    # via pyats.reporter
+grpcio==1.43.0
+    # via cisco-gnmi
+idna==3.3
+    # via
+    #   requests
+    #   yarl
+jinja2==3.0.3
+    # via
+    #   aiohttp-swagger
+    #   pyats.aereport
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.log
+jsonpickle==2.1.0
+    # via genie
+junit-xml==1.9
+    # via pyats.aereport
+markupsafe==2.0.1
+    # via jinja2
+multidict==6.0.2
+    # via
+    #   aiohttp
+    #   yarl
+netaddr==0.8.0
+    # via genie
+netmiko==3.4.0
+    # via -r requirements.in
+ntc-templates==2.3.2
+    # via
+    #   netmiko
+    #   scrapli
+packaging==21.3
+    # via pyats
+paramiko==2.9.2
+    # via
+    #   netmiko
+    #   scp
+    #   scrapli
+pathspec==0.9.0
+    # via yamllint
 pluggy==1.0.0
     # via -r requirements.in
+prettytable==3.0.0
+    # via
+    #   genie
+    #   unicon.plugins
+protobuf==3.19.3
+    # via cisco-gnmi
+psutil==5.9.0
+    # via
+    #   pyats.aereport
+    #   pyats.easypy
+pyats.aereport==22.1
+    # via
+    #   pyats
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.reporter
+pyats.aetest==22.1
+    # via
+    #   pyats
+    #   pyats.kleenex
+pyats.async==22.1
+    # via
+    #   pyats
+    #   pyats.connections
+    #   pyats.kleenex
+pyats.connections==22.1
+    # via
+    #   pyats
+    #   pyats.topology
+pyats.datastructures==22.1
+    # via
+    #   pyats
+    #   pyats.aetest
+    #   pyats.connections
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.log
+    #   pyats.tcl
+    #   pyats.topology
+    #   pyats.utils
+pyats.easypy==22.1
+    # via pyats
+pyats.kleenex==22.1
+    # via
+    #   pyats
+    #   pyats.easypy
+pyats.log==22.1
+    # via
+    #   pyats
+    #   pyats.aereport
+    #   pyats.aetest
+    #   pyats.async
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.reporter
+    #   pyats.tcl
+pyats.reporter==22.1
+    # via pyats
+pyats.results==22.1
+    # via
+    #   pyats
+    #   pyats.aereport
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.reporter
+pyats.tcl==22.1
+    # via pyats
+pyats.topology==22.1
+    # via
+    #   pyats
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.utils
+pyats.utils==22.1
+    # via
+    #   pyats
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.reporter
+    #   pyats.topology
+pyats==22.1
+    # via
+    #   -r requirements.in
+    #   scrapli
+pycparser==2.21
+    # via cffi
+pyftpdlib==1.5.6
+    # via genie.libs.filetransferutils
+pynacl==1.5.0
+    # via paramiko
+pyparsing==3.0.7
+    # via packaging
+pyserial==3.5
+    # via netmiko
+python-engineio==3.14.2
+    # via
+    #   pyats.log
+    #   python-socketio
+python-socketio==4.6.1
+    # via pyats.log
+pyyaml==6.0
+    # via
+    #   aiohttp-swagger
+    #   pyats.aetest
+    #   pyats.log
+    #   pyats.reporter
+    #   pyats.topology
+    #   unicon
+    #   unicon.plugins
+    #   yamllint
+requests==2.27.1
+    # via pyats.kleenex
 robotframework==4.1.3
     # via -r requirements.in
+ruamel.yaml.clib==0.2.6
+    # via ruamel.yaml
+ruamel.yaml==0.17.20
+    # via genie.libs.sdk
+scp==0.14.2
+    # via netmiko
+scrapli-community==2021.7.30
+    # via scrapli
+scrapli[full]==2021.7.30
+    # via
+    #   -r requirements.in
+    #   scrapli-community
+six==1.16.0
+    # via
+    #   bcrypt
+    #   cisco-gnmi
+    #   grpcio
+    #   junit-xml
+    #   python-engineio
+    #   python-socketio
+    #   textfsm
+smmap==5.0.0
+    # via gitdb
+ssh2-python==0.27.0
+    # via scrapli
+tenacity==8.0.1
+    # via netmiko
+textfsm==1.1.2
+    # via
+    #   ntc-templates
+    #   scrapli
+tftpy==0.8.0
+    # via genie.libs.filetransferutils
+tqdm==4.62.3
+    # via genie
+ttp==0.8.4
+    # via scrapli
+typing-extensions==4.0.1
+    # via asyncssh
+unicon.plugins==22.1.1
+    # via unicon
+unicon==22.1
+    # via
+    #   genie.libs.filetransferutils
+    #   pyats.connections
+    #   unicon.plugins
+urllib3==1.26.8
+    # via requests
+wcwidth==0.2.5
+    # via prettytable
+wheel==0.37.1
+    # via
+    #   genie.libs.clean
+    #   genie.libs.health
+xmltodict==0.12.0
+    # via genie.libs.parser
+yamllint==1.26.3
+    # via pyats.topology
+yarl==1.7.2
+    # via aiohttp
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

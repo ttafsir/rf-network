@@ -1,61 +1,128 @@
 # -*- coding: utf-8 -*-
-from robot.api.deco import library
+import typing as t
+
+from robot.api.deco import keyword, library
 from robot.utils.connectioncache import ConnectionCache
 
-from .plugins import plugin_manager as pm
+try:
+    from robot.api import logger
+except ImportError:
+    logger = None
+
 from .version import __version__
+from .plugins import plugin_manager as pm
 
 
 @library(scope="GLOBAL", version=__version__)
 class NetworkTransportLibrary:
-    """rf_network - Multi-vendor RobotFramework Library to test network devices"""
+    """NetworkTransportLibrary - Multi-vendor RobotFramework Library to test network devices"""
 
     def __init__(self):
-        self._cache = ConnectionCache()
-        self._active_connections = {}
+        self._connections = ConnectionCache()
         self._connection_plugin = None
         self.pm = pm
+        self._log = logger or None
 
-    def connect_to(
+    @property
+    def current(self):
+        """Return current connection"""
+        return self._connections.current
+
+    def log(self, msg, level="INFO"):
+        msg = msg.strip()
+        if self._log and msg:
+            self._log.write(msg, level)
+        elif msg:
+            print(f"*{msg}* {level}")
+
+    def get_connection(self, alias_or_index: t.Union[str, int] = None):
+        return self._connections.get_connection(alias_or_index)
+
+    @keyword(name="Connect To")
+    def open_connection(
         self,
         host: str,
         username: str,
         password: str,
         platform: str,
-        alias: str = None,
-        connection_plugin: str = None,
-        **kwargs
+        alias: t.Optional[str],
+        connection_plugin: str = "netmiko",
+        **kwargs,
     ):
-        params = {
+        """Open connection to device"""
+        connection_params = {
             "host": host,
             "username": username,
             "password": password,
             "platform": platform,
         }
+
+        self.log(f"Connecting to {host}; transport: {connection_plugin}")
+        print(f"Connecting to {host}; transport: {connection_plugin}")
         conn = self.pm.hook.connect_to(
-            connection=connection_plugin, **params, options=kwargs
+            connection=connection_plugin, **connection_params, options=kwargs
         )
+        print(f"{connection_params}")
+
         if conn is None:
             raise ValueError("connection is null")
         self._connection_plugin = connection_plugin
-        index = self._cache.register(conn, alias=alias)
-        self._active_connections[index] = conn
+        return self._connections.register(conn, alias=alias)
 
-    def switch_connection_to(self, alias_or_index):
-        """SSH Switch To - switch the active switch for all following keywords"""
-        self._cache.switch(alias_or_index)
-        return self._cache.current_index
+    @keyword(name="Switch To", types={"alias_or_index": (None, int, str)})
+    def switch_connection(self, alias_or_index: t.Optional[t.Union[str, int]] = None):
+        """Switch To - switch the active switch for all following keywords"""
+        old_index = self.current
+        if alias_or_index is not None:
+            self._connections.switch(alias_or_index)
+        return old_index
 
-    def send_command_to(self, command, ssh_alias_or_index=None, **kwargs):
-        """SSH Send Command - Executes ``command`` on a device"""
-        conn = self._cache.get_connection(alias_or_index=ssh_alias_or_index)
-        return self.pm.hook.send_command_to(
-            command=command, conn=conn, conn_name=self._connection_plugin, extras=kwargs
+    @keyword(
+        name="Send Command",
+        types={"command": str, "alias_or_index": (None, int, str)},
+    )
+    def send_command(
+        self, command: str, alias_or_index: t.Optional[t.Union[str, int]], **kwargs
+    ):
+        """Send Command - Executes ``command`` on a device"""
+        conn = self._connections.get_connection(alias_or_index=alias_or_index)
+        return self.pm.hook.send_command(
+            command=command, conn=conn, plugin=self._connection_plugin, **kwargs
         )
 
-    def get_connections(self):
-        return [v for _, v in self._active_connections.items()]
+    @keyword(
+        name="Send Command Parsed",
+        types={"command": str, "alias_or_index": (None, int, str)},
+    )
+    def send_command_and_parse(
+        self,
+        command: str,
+        alias_or_index: t.Optional[t.Union[str, int]],
+        parser: t.Literal["genie", "textfsm"],
+        **kwargs,
+    ):
+        """Send Command - Executes ``command`` on a device"""
+        conn = self._connections.get_connection(alias_or_index=alias_or_index)
+        return self.pm.hook.send_command_and_parse(
+            command=command,
+            conn=conn,
+            plugin=self._connection_plugin,
+            parser=parser,
+            **kwargs,
+        )
 
-    def clear_connections(self):
-        self._active_connections = {}
-        self._cache.empty_cache()
+    @keyword(name="Clear Connections")
+    def close_all_connections(self):
+        for conn in self._connections._connections:
+            self.pm.hook.close_connection(conn=conn, plugin=self._connection_plugin)
+        self._connections.close_all()
+
+    @keyword(name="Clear Connection", types={"alias_or_index": (None, int, str)})
+    def close_connection(self, alias_or_index=t.Optional[t.Union[str, int]]):
+        """Clear Connection - clears the currect active connection"""
+        conn = self._connections.get_connection(alias_or_index=alias_or_index)
+
+        self.current.close()
+        self._connections.current = self._connections._no_current
+
+        self.pm.hook.close_connection(conn=conn, plugin=self._connection_plugin)

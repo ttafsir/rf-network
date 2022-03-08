@@ -1,2 +1,6 @@
 pluggy>=1.0,<1.1
 robotframework
+netmiko
+genie
+pyats
+scrapli[full]

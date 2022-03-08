@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import json
 from typing import Any, Dict, Optional
 
 from netmiko import ConnectHandler
@@ -25,7 +24,7 @@ def connect_to(
     password: Optional[str],
     platform: Optional[str],
     port: Optional[int] = 22,
-    options: Optional[Dict[str, Any]] = None,
+    **options: Optional[Dict[str, Any]],
 ) -> None:
     if connection != CONNECTION_PLUGIN:
         return
@@ -47,15 +46,27 @@ def connect_to(
 
 
 @hookimpl
-def send_command_to(
+def send_command(
+    command: str,
+    conn: Any,
+    plugin: str,
+    **options: Optional[Dict[str, Any]],
+):
+    if plugin == CONNECTION_PLUGIN:
+        return conn.send_command(command, **options)
+
+
+@hookimpl
+def send_command_and_parse(
     command,
     conn,
-    conn_name,
-    options,
+    plugin,
+    parser: str = "genie",
+    **options: Optional[Dict[str, Any]],
 ):
-    if conn_name == CONNECTION_PLUGIN:
-        if options.get("use_genie"):
-            parsed_resp = conn.send_command(command, use_genie=True)
-            parsed_resp_pretty = json.dumps(parsed_resp, sort_keys=True, indent=4)
-            return parsed_resp, parsed_resp_pretty
-        return conn.send_command(command)
+    if plugin == CONNECTION_PLUGIN:
+        if parser == "genie":
+            return conn.send_command(command, use_genie=True, **options)
+        elif parser == "textfsm":
+            return conn.send_command(command, use_textfsm=True, **options)
+        return
