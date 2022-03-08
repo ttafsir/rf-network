@@ -1,5 +1,3 @@
-import os
-
 import pytest
 
 from rf_network.library import NetworkTransportLibrary
