@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import json
 from typing import Any, Dict, Optional
 
 from scrapli import Scrapli
@@ -17,7 +16,7 @@ def connect_to(
     password: Optional[str],
     platform: Optional[str],
     port: Optional[int] = 22,
-    options: Optional[Dict[str, Any]] = None,
+    **options: Optional[Dict[str, Any]],
 ) -> Scrapli:
 
     if connection != CONNECTION_PLUGIN:
@@ -36,16 +35,29 @@ def connect_to(
 
 
 @hookimpl
-def send_command_to(
+def send_command(
     command,
     conn,
-    conn_name,
-    options,
+    plugin,
+    **options: Optional[Dict[str, Any]],
 ):
-    if conn_name == CONNECTION_PLUGIN:
+    if plugin == CONNECTION_PLUGIN:
+        response = conn.send_command(command, **options)
+        return response.result
+
+
+@hookimpl
+def send_command_and_parse(
+    command,
+    conn,
+    plugin,
+    parser: str = "genie",
+    **options: Optional[Dict[str, Any]],
+):
+    if plugin == CONNECTION_PLUGIN:
         response = conn.send_command(command)
-        if options.get("genie_parse"):
-            parsed_resp = response.genie_parse_output()
-            parsed_resp_pretty = json.dumps(parsed_resp, sort_keys=True, indent=4)
-            return response.result, parsed_resp_pretty
+        if parser == "genie":
+            return response.genie_parse_output()
+        elif parser == "textfsm":
+            return response.textfsm_parse_output()
         return response.result

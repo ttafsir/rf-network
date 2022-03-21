@@ -6,7 +6,7 @@ hookimpl = HookimplMarker("rf_network")
 
 
 @hookspec(firstresult=True)
-def connect_to(connection, host, username, password, platform, options):
+def connect_to(connection, host, username, password, platform, **options):
     """
     connect to device using SSH connection provider
 
@@ -18,5 +18,10 @@ def connect_to(connection, host, username, password, platform, options):
 
 
 @hookspec(firstresult=True)
-def send_command_to(command, conn, conn_name, options):
+def send_command(command, conn, plugin, **options):
     """Send command via SSH connection"""
+
+
+@hookspec
+def send_command_and_parse(command, conn, plugin, parser, **options):
+    """Send command via SSH connection and parse response"""

@@ -4,36 +4,221 @@
 #
 #    pip-compile requirements-dev.in
 #
+aiofiles==0.8.0
+    # via
+    #   -r requirements.txt
+    #   pyats.log
+aiohttp-swagger==1.0.16
+    # via
+    #   -r requirements.txt
+    #   pyats.log
+aiohttp==3.8.1
+    # via
+    #   -r requirements.txt
+    #   aiohttp-swagger
+    #   pyats.log
+aiosignal==1.2.0
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+async-lru==1.0.2
+    # via
+    #   -r requirements.txt
+    #   pyats.log
+async-timeout==4.0.2
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+asyncssh==2.9.0
+    # via
+    #   -r requirements.txt
+    #   scrapli
 attrs==21.4.0
-    # via pytest
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+    #   pytest
+bcrypt==3.2.0
+    # via
+    #   -r requirements.txt
+    #   paramiko
 black==21.12b0
     # via -r requirements-dev.in
+certifi==2021.10.8
+    # via
+    #   -r requirements.txt
+    #   requests
+cffi==1.15.0
+    # via
+    #   -r requirements.txt
+    #   bcrypt
+    #   cryptography
+    #   pynacl
 cfgv==3.3.1
     # via pre-commit
+chardet==4.0.0
+    # via
+    #   -r requirements.txt
+    #   pyats.log
+charset-normalizer==2.0.10
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+    #   requests
+cisco-gnmi==1.0.15
+    # via
+    #   -r requirements.txt
+    #   genie.libs.sdk
 click==8.0.3
     # via black
+cryptography==36.0.1
+    # via
+    #   -r requirements.txt
+    #   asyncssh
+    #   cisco-gnmi
+    #   paramiko
+    #   pyats.utils
+dill==0.3.4
+    # via
+    #   -r requirements.txt
+    #   genie
+    #   unicon
 distlib==0.3.4
     # via virtualenv
+distro==1.6.0
+    # via
+    #   -r requirements.txt
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.utils
 filelock==3.4.2
     # via virtualenv
 flake8==4.0.1
     # via -r requirements-dev.in
+frozenlist==1.3.0
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+    #   aiosignal
+future==0.18.2
+    # via
+    #   -r requirements.txt
+    #   textfsm
+genie.libs.clean==22.1
+    # via
+    #   -r requirements.txt
+    #   genie
+genie.libs.conf==22.1
+    # via
+    #   -r requirements.txt
+    #   genie
+genie.libs.filetransferutils==22.1
+    # via
+    #   -r requirements.txt
+    #   genie
+genie.libs.health==22.1
+    # via
+    #   -r requirements.txt
+    #   genie
+genie.libs.ops==22.1
+    # via
+    #   -r requirements.txt
+    #   genie
+genie.libs.parser==22.1
+    # via
+    #   -r requirements.txt
+    #   genie
+genie.libs.sdk==22.1.2
+    # via
+    #   -r requirements.txt
+    #   genie
+genie==22.1
+    # via
+    #   -r requirements.txt
+    #   genie.libs.clean
+    #   genie.libs.health
+    #   scrapli
+gitdb==4.0.9
+    # via
+    #   -r requirements.txt
+    #   gitpython
+gitpython==3.1.18
+    # via
+    #   -r requirements.txt
+    #   pyats.reporter
+grpcio==1.43.0
+    # via
+    #   -r requirements.txt
+    #   cisco-gnmi
 identify==2.4.5
     # via pre-commit
+idna==3.3
+    # via
+    #   -r requirements.txt
+    #   requests
+    #   yarl
 iniconfig==1.1.1
     # via pytest
 isort==5.10.1
     # via -r requirements-dev.in
+jinja2==3.0.3
+    # via
+    #   -r requirements.txt
+    #   aiohttp-swagger
+    #   pyats.aereport
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.log
+jsonpickle==2.1.0
+    # via
+    #   -r requirements.txt
+    #   genie
+junit-xml==1.9
+    # via
+    #   -r requirements.txt
+    #   pyats.aereport
+markupsafe==2.0.1
+    # via
+    #   -r requirements.txt
+    #   jinja2
 mccabe==0.6.1
     # via flake8
+multidict==6.0.2
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+    #   yarl
 mypy-extensions==0.4.3
     # via black
+netaddr==0.8.0
+    # via
+    #   -r requirements.txt
+    #   genie
+netmiko==3.4.0
+    # via -r requirements.txt
 nodeenv==1.6.0
     # via pre-commit
+ntc-templates==2.3.2
+    # via
+    #   -r requirements.txt
+    #   netmiko
+    #   scrapli
 packaging==21.3
-    # via pytest
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pytest
+paramiko==2.9.2
+    # via
+    #   -r requirements.txt
+    #   netmiko
+    #   scp
+    #   scrapli
 pathspec==0.9.0
-    # via black
+    # via
+    #   -r requirements.txt
+    #   black
+    #   yamllint
 platformdirs==2.4.1
     # via
     #   black
@@ -44,29 +229,274 @@ pluggy==1.0.0
     #   pytest
 pre-commit==2.17.0
     # via -r requirements-dev.in
+prettytable==3.0.0
+    # via
+    #   -r requirements.txt
+    #   genie
+    #   unicon.plugins
+protobuf==3.19.3
+    # via
+    #   -r requirements.txt
+    #   cisco-gnmi
+psutil==5.9.0
+    # via
+    #   -r requirements.txt
+    #   pyats.aereport
+    #   pyats.easypy
 py==1.11.0
     # via pytest
+pyats.aereport==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.reporter
+pyats.aetest==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.kleenex
+pyats.async==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.connections
+    #   pyats.kleenex
+pyats.connections==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.topology
+pyats.datastructures==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.aetest
+    #   pyats.connections
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.log
+    #   pyats.tcl
+    #   pyats.topology
+    #   pyats.utils
+pyats.easypy==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+pyats.kleenex==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.easypy
+pyats.log==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.aereport
+    #   pyats.aetest
+    #   pyats.async
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.reporter
+    #   pyats.tcl
+pyats.reporter==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+pyats.results==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.aereport
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.reporter
+pyats.tcl==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+pyats.topology==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.utils
+pyats.utils==22.1
+    # via
+    #   -r requirements.txt
+    #   pyats
+    #   pyats.aetest
+    #   pyats.easypy
+    #   pyats.kleenex
+    #   pyats.reporter
+    #   pyats.topology
+pyats==22.1
+    # via
+    #   -r requirements.txt
+    #   scrapli
 pycodestyle==2.8.0
     # via flake8
+pycparser==2.21
+    # via
+    #   -r requirements.txt
+    #   cffi
 pyflakes==2.4.0
     # via flake8
+pyftpdlib==1.5.6
+    # via
+    #   -r requirements.txt
+    #   genie.libs.filetransferutils
+pynacl==1.5.0
+    # via
+    #   -r requirements.txt
+    #   paramiko
 pyparsing==3.0.7
-    # via packaging
+    # via
+    #   -r requirements.txt
+    #   packaging
+pyserial==3.5
+    # via
+    #   -r requirements.txt
+    #   netmiko
 pytest==6.2.5
     # via -r requirements-dev.in
+python-engineio==3.14.2
+    # via
+    #   -r requirements.txt
+    #   pyats.log
+    #   python-socketio
+python-socketio==4.6.1
+    # via
+    #   -r requirements.txt
+    #   pyats.log
 pyyaml==6.0
-    # via pre-commit
+    # via
+    #   -r requirements.txt
+    #   aiohttp-swagger
+    #   pre-commit
+    #   pyats.aetest
+    #   pyats.log
+    #   pyats.reporter
+    #   pyats.topology
+    #   unicon
+    #   unicon.plugins
+    #   yamllint
+requests==2.27.1
+    # via
+    #   -r requirements.txt
+    #   pyats.kleenex
 robotframework==4.1.3
     # via -r requirements.txt
+ruamel.yaml.clib==0.2.6
+    # via
+    #   -r requirements.txt
+    #   ruamel.yaml
+ruamel.yaml==0.17.20
+    # via
+    #   -r requirements.txt
+    #   genie.libs.sdk
+scp==0.14.2
+    # via
+    #   -r requirements.txt
+    #   netmiko
+scrapli-community==2021.7.30
+    # via
+    #   -r requirements.txt
+    #   scrapli
+scrapli[full]==2021.7.30
+    # via
+    #   -r requirements.txt
+    #   scrapli-community
 six==1.16.0
-    # via virtualenv
+    # via
+    #   -r requirements.txt
+    #   bcrypt
+    #   cisco-gnmi
+    #   grpcio
+    #   junit-xml
+    #   python-engineio
+    #   python-socketio
+    #   textfsm
+    #   virtualenv
+smmap==5.0.0
+    # via
+    #   -r requirements.txt
+    #   gitdb
+ssh2-python==0.27.0
+    # via
+    #   -r requirements.txt
+    #   scrapli
+tenacity==8.0.1
+    # via
+    #   -r requirements.txt
+    #   netmiko
+textfsm==1.1.2
+    # via
+    #   -r requirements.txt
+    #   ntc-templates
+    #   scrapli
+tftpy==0.8.0
+    # via
+    #   -r requirements.txt
+    #   genie.libs.filetransferutils
 toml==0.10.2
     # via
     #   pre-commit
     #   pytest
 tomli==1.2.3
     # via black
+tqdm==4.62.3
+    # via
+    #   -r requirements.txt
+    #   genie
+ttp==0.8.4
+    # via
+    #   -r requirements.txt
+    #   scrapli
 typing-extensions==4.0.1
-    # via black
+    # via
+    #   -r requirements.txt
+    #   asyncssh
+    #   black
+unicon.plugins==22.1.1
+    # via
+    #   -r requirements.txt
+    #   unicon
+unicon==22.1
+    # via
+    #   -r requirements.txt
+    #   genie.libs.filetransferutils
+    #   pyats.connections
+    #   unicon.plugins
+urllib3==1.26.8
+    # via
+    #   -r requirements.txt
+    #   requests
 virtualenv==20.13.0
     # via pre-commit
+wcwidth==0.2.5
+    # via
+    #   -r requirements.txt
+    #   prettytable
+wheel==0.37.1
+    # via
+    #   -r requirements.txt
+    #   genie.libs.clean
+    #   genie.libs.health
+xmltodict==0.12.0
+    # via
+    #   -r requirements.txt
+    #   genie.libs.parser
+yamllint==1.26.3
+    # via
+    #   -r requirements.txt
+    #   pyats.topology
+yarl==1.7.2
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

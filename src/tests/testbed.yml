@@ -1,0 +1,9 @@
+---
+testbed:
+  devices:
+    csr1:
+      host: 10.255.70.243
+      platform: ios #cisco_iosxe
+
+ntp_stratum_min: 1
+ntp_stratum_max: 4
