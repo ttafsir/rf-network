@@ -5,17 +5,17 @@
 #    pip-compile requirements.in
 #
 aiofiles==0.8.0
-    # via pyats.log
-aiohttp-swagger==1.0.16
-    # via pyats.log
+    # via pyats-log
 aiohttp==3.8.1
     # via
     #   aiohttp-swagger
-    #   pyats.log
+    #   pyats-log
+aiohttp-swagger==1.0.16
+    # via pyats-log
 aiosignal==1.2.0
     # via aiohttp
 async-lru==1.0.2
-    # via pyats.log
+    # via pyats-log
 async-timeout==4.0.2
     # via aiohttp
 asyncssh==2.9.0
@@ -32,58 +32,57 @@ cffi==1.15.0
     #   cryptography
     #   pynacl
 chardet==4.0.0
-    # via pyats.log
+    # via pyats-log
 charset-normalizer==2.0.10
     # via
     #   aiohttp
     #   requests
 cisco-gnmi==1.0.15
-    # via genie.libs.sdk
+    # via genie-libs-sdk
 cryptography==36.0.1
     # via
     #   asyncssh
     #   cisco-gnmi
     #   paramiko
-    #   pyats.utils
+    #   pyats-utils
 dill==0.3.4
     # via
     #   genie
     #   unicon
 distro==1.6.0
     # via
-    #   pyats.easypy
-    #   pyats.kleenex
-    #   pyats.utils
+    #   pyats-easypy
+    #   pyats-kleenex
+    #   pyats-utils
 frozenlist==1.3.0
     # via
     #   aiohttp
     #   aiosignal
 future==0.18.2
     # via textfsm
-genie.libs.clean==22.1
-    # via genie
-genie.libs.conf==22.1
-    # via genie
-genie.libs.filetransferutils==22.1
-    # via genie
-genie.libs.health==22.1
-    # via genie
-genie.libs.ops==22.1
-    # via genie
-genie.libs.parser==22.1
-    # via genie
-genie.libs.sdk==22.1.2
-    # via genie
 genie==22.1
     # via
     #   -r requirements.in
-    #   genie.libs.clean
-    #   genie.libs.health
-    #   scrapli
+    #   genie-libs-clean
+    #   genie-libs-health
+genie-libs-clean==22.1
+    # via genie
+genie-libs-conf==22.1
+    # via genie
+genie-libs-filetransferutils==22.1
+    # via genie
+genie-libs-health==22.1
+    # via genie
+genie-libs-ops==22.1
+    # via genie
+genie-libs-parser==22.1
+    # via genie
+genie-libs-sdk==22.1.2
+    # via genie
 gitdb==4.0.9
     # via gitpython
 gitpython==3.1.18
-    # via pyats.reporter
+    # via pyats-reporter
 grpcio==1.43.0
     # via cisco-gnmi
 idna==3.3
@@ -93,14 +92,14 @@ idna==3.3
 jinja2==3.0.3
     # via
     #   aiohttp-swagger
-    #   pyats.aereport
-    #   pyats.aetest
-    #   pyats.easypy
-    #   pyats.log
+    #   pyats-aereport
+    #   pyats-aetest
+    #   pyats-easypy
+    #   pyats-log
 jsonpickle==2.1.0
     # via genie
 junit-xml==1.9
-    # via pyats.aereport
+    # via pyats-aereport
 markupsafe==2.0.1
     # via jinja2
 multidict==6.0.2
@@ -129,92 +128,90 @@ pluggy==1.0.0
 prettytable==3.0.0
     # via
     #   genie
-    #   unicon.plugins
-protobuf==3.19.3
+    #   unicon-plugins
+protobuf==3.19.5
     # via cisco-gnmi
 psutil==5.9.0
     # via
-    #   pyats.aereport
-    #   pyats.easypy
-pyats.aereport==22.1
-    # via
-    #   pyats
-    #   pyats.aetest
-    #   pyats.easypy
-    #   pyats.reporter
-pyats.aetest==22.1
-    # via
-    #   pyats
-    #   pyats.kleenex
-pyats.async==22.1
-    # via
-    #   pyats
-    #   pyats.connections
-    #   pyats.kleenex
-pyats.connections==22.1
-    # via
-    #   pyats
-    #   pyats.topology
-pyats.datastructures==22.1
-    # via
-    #   pyats
-    #   pyats.aetest
-    #   pyats.connections
-    #   pyats.easypy
-    #   pyats.kleenex
-    #   pyats.log
-    #   pyats.tcl
-    #   pyats.topology
-    #   pyats.utils
-pyats.easypy==22.1
-    # via pyats
-pyats.kleenex==22.1
-    # via
-    #   pyats
-    #   pyats.easypy
-pyats.log==22.1
-    # via
-    #   pyats
-    #   pyats.aereport
-    #   pyats.aetest
-    #   pyats.async
-    #   pyats.easypy
-    #   pyats.kleenex
-    #   pyats.reporter
-    #   pyats.tcl
-pyats.reporter==22.1
-    # via pyats
-pyats.results==22.1
-    # via
-    #   pyats
-    #   pyats.aereport
-    #   pyats.aetest
-    #   pyats.easypy
-    #   pyats.reporter
-pyats.tcl==22.1
-    # via pyats
-pyats.topology==22.1
-    # via
-    #   pyats
-    #   pyats.easypy
-    #   pyats.kleenex
-    #   pyats.utils
-pyats.utils==22.1
-    # via
-    #   pyats
-    #   pyats.aetest
-    #   pyats.easypy
-    #   pyats.kleenex
-    #   pyats.reporter
-    #   pyats.topology
+    #   pyats-aereport
+    #   pyats-easypy
 pyats==22.1
+    # via -r requirements.in
+pyats-aereport==22.1
     # via
-    #   -r requirements.in
-    #   scrapli
+    #   pyats
+    #   pyats-aetest
+    #   pyats-easypy
+    #   pyats-reporter
+pyats-aetest==22.1
+    # via
+    #   pyats
+    #   pyats-kleenex
+pyats-async==22.1
+    # via
+    #   pyats
+    #   pyats-connections
+    #   pyats-kleenex
+pyats-connections==22.1
+    # via
+    #   pyats
+    #   pyats-topology
+pyats-datastructures==22.1
+    # via
+    #   pyats
+    #   pyats-aetest
+    #   pyats-connections
+    #   pyats-easypy
+    #   pyats-kleenex
+    #   pyats-log
+    #   pyats-tcl
+    #   pyats-topology
+    #   pyats-utils
+pyats-easypy==22.1
+    # via pyats
+pyats-kleenex==22.1
+    # via
+    #   pyats
+    #   pyats-easypy
+pyats-log==22.1
+    # via
+    #   pyats
+    #   pyats-aereport
+    #   pyats-aetest
+    #   pyats-async
+    #   pyats-easypy
+    #   pyats-kleenex
+    #   pyats-reporter
+    #   pyats-tcl
+pyats-reporter==22.1
+    # via pyats
+pyats-results==22.1
+    # via
+    #   pyats
+    #   pyats-aereport
+    #   pyats-aetest
+    #   pyats-easypy
+    #   pyats-reporter
+pyats-tcl==22.1
+    # via pyats
+pyats-topology==22.1
+    # via
+    #   pyats
+    #   pyats-easypy
+    #   pyats-kleenex
+    #   pyats-utils
+pyats-utils==22.1
+    # via
+    #   pyats
+    #   pyats-aetest
+    #   pyats-easypy
+    #   pyats-kleenex
+    #   pyats-reporter
+    #   pyats-topology
 pycparser==2.21
     # via cffi
 pyftpdlib==1.5.6
-    # via genie.libs.filetransferutils
+    # via genie-libs-filetransferutils
 pynacl==1.5.0
     # via paramiko
 pyparsing==3.0.7
@@ -223,36 +220,36 @@ pyserial==3.5
     # via netmiko
 python-engineio==3.14.2
     # via
-    #   pyats.log
+    #   pyats-log
     #   python-socketio
 python-socketio==4.6.1
-    # via pyats.log
+    # via pyats-log
 pyyaml==6.0
     # via
     #   aiohttp-swagger
-    #   pyats.aetest
-    #   pyats.log
-    #   pyats.reporter
-    #   pyats.topology
+    #   pyats-aetest
+    #   pyats-log
+    #   pyats-reporter
+    #   pyats-topology
     #   unicon
-    #   unicon.plugins
+    #   unicon-plugins
     #   yamllint
 requests==2.27.1
-    # via pyats.kleenex
+    # via pyats-kleenex
 robotframework==4.1.3
     # via -r requirements.in
-ruamel.yaml.clib==0.2.6
-    # via ruamel.yaml
-ruamel.yaml==0.17.20
-    # via genie.libs.sdk
+ruamel-yaml==0.17.20
+    # via genie-libs-sdk
+ruamel-yaml-clib==0.2.6
+    # via ruamel-yaml
 scp==0.14.2
     # via netmiko
-scrapli-community==2021.7.30
-    # via scrapli
 scrapli[full]==2021.7.30
     # via
     #   -r requirements.in
     #   scrapli-community
+scrapli-community==2021.7.30
+    # via scrapli
 six==1.16.0
     # via
     #   bcrypt
@@ -273,32 +270,32 @@ textfsm==1.1.2
     #   ntc-templates
     #   scrapli
 tftpy==0.8.0
-    # via genie.libs.filetransferutils
+    # via genie-libs-filetransferutils
 tqdm==4.62.3
     # via genie
 ttp==0.8.4
     # via scrapli
 typing-extensions==4.0.1
     # via asyncssh
-unicon.plugins==22.1.1
-    # via unicon
 unicon==22.1
     # via
-    #   genie.libs.filetransferutils
-    #   pyats.connections
-    #   unicon.plugins
+    #   genie-libs-filetransferutils
+    #   pyats-connections
+    #   unicon-plugins
+unicon-plugins==22.1.1
+    # via unicon
 urllib3==1.26.8
     # via requests
 wcwidth==0.2.5
     # via prettytable
 wheel==0.37.1
     # via
-    #   genie.libs.clean
-    #   genie.libs.health
+    #   genie-libs-clean
+    #   genie-libs-health
 xmltodict==0.12.0
-    # via genie.libs.parser
+    # via genie-libs-parser
 yamllint==1.26.3
-    # via pyats.topology
+    # via pyats-topology
 yarl==1.7.2
     # via aiohttp
 
